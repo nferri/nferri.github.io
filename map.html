@@ -5,6 +5,8 @@
   <meta charset="utf-8">
   <title>The Trump Map</title>
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css" />
+  <p hidden>Data collected from articles featured from https://www.abc.net.au/news/2018-06-25/chart-of-the-day-trump-global-approval/9899778 and https://www.bbc.com/news/world-us-canada-39732845</p>
+  
 <style> 
   #mapContainer {
     position: absolute;
@@ -28,7 +30,7 @@
     
     //icons
     var trump_head = L.icon({
-      iconUrl: 'trump-face.png',
+      iconUrl: 'img/trump-face.png',
       iconSize: [35, 35],
       iconAnchor: [12, 40],
       popupAnchor: [-4, -40],
@@ -36,7 +38,7 @@
     });
 
     var trump_face = L.icon({
-      iconUrl: 'Trumpface.png',
+      iconUrl: 'img/Trumpface.png',
       iconSize: [58, 36],
       iconAnchor: [12, 40],
       popupAnchor: [-4, -40],
