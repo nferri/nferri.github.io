@@ -27,7 +27,22 @@
     var layer = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
       attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="https://carto.com/attributions">CARTO</a>'
  }).addTo(map)
-    
+   
+    	//add the basemap to the map
+			map.addLayer(mapContainer);
+
+			//add a local geojson file
+			//Thanks to https://www.igismap.com/add-load-geojson-file-point-polyline-polygon-map-leaflet-js/ for the tutorial
+			$.getJSON('countries.geojson',function(data){
+			// add GeoJSON layer to the map once the file is loaded
+			var datalayer = L.geoJson(data ,{
+				onEachFeature: function(feature, featureLayer) {
+					featureLayer.bindPopup(feature.properties.NAME_1);
+				}
+			}).addTo(map);
+			map.fitBounds(datalayer.getBounds());
+			});
+
     //icons
     var trump_head = L.icon({
       iconUrl: 'trump-face.png',
