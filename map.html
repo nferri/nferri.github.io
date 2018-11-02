@@ -28,22 +28,9 @@
 
     var layer = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
       attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="https://carto.com/attributions">CARTO</a>'
- }).addTo(map)
-   
-
-			//add a local geojson file
-			//Thanks to https://www.igismap.com/add-load-geojson-file-point-polyline-polygon-map-leaflet-js/ for the tutorial
-			$.getJSON('countries.geojson',function(data){
-			// add GeoJSON layer to the map once the file is loaded
-			var datalayer = L.geoJson(data ,{
-				onEachFeature: function(feature, featureLayer) {
-					featureLayer.bindPopup(feature.properties.ADMIN);
-				}
-			});
-			
-			
-
-		function getColor(d) {
+ }).addTo(map) //this is the basemap
+    
+    function getColor(d) {
     return d == 1 ? '#800026' :
            d == 0  ? '#BD0026' :
            d == -1  ? '#E31A1C' :
@@ -62,8 +49,19 @@
     };
 }
 
-L.geoJson(datalayer, {style: style}).addTo(map);
+//L.geoJson(datalayer, {style: style}).addTo(map);
 
+			//add a local geojson file
+			//Thanks to https://www.igismap.com/add-load-geojson-file-point-polyline-polygon-map-leaflet-js/ for the tutorial
+			$.getJSON('countries.geojson',function(data){
+			// add GeoJSON layer to the map once the file is loaded
+			var datalayer = L.geoJson(data ,{
+				onEachFeature: function(feature, featureLayer) {
+					featureLayer.bindPopup(feature.properties.ADMIN);
+				},
+                style: style
+			}).addTo(map);
+		
 });
 
     //icons
