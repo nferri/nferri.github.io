@@ -43,17 +43,6 @@
 			
 			});
 
-	//Legend
-	var legend = L.control({position: 'bottomright'});
-
-	legend.onAdd = function (map) {
-    var div = L.DomUtil.create('div', 'info legend'),
-            grades = [-1, 0, 1],
-            labels = ["Do not support Trump's presidency", "Neutral", "Support Trump's presidency"];
-    return div;
-};
-
-legend.addTo(map);
     //icons
     var trump_head = L.icon({
       iconUrl: 'trump-face.png',
