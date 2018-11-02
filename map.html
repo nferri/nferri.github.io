@@ -39,11 +39,32 @@
 				onEachFeature: function(feature, featureLayer) {
 					featureLayer.bindPopup(feature.properties.ADMIN);
 				}
-			}).addTo(map);
+			});
 			
 			});
 
-		
+		function getColor(d) {
+    return d == 1 ? '#800026' :
+           d == 0  ? '#BD0026' :
+           d == -1  ? '#E31A1C' :
+                      '#FFEDA0';
+}
+
+    
+    function style(feature) {
+    return {
+        fillColor: getColor(feature.properties.density),
+        weight: 2,
+        opacity: 1,
+        color: 'white',
+        dashArray: '3',
+        fillOpacity: 0.7
+    };
+}
+
+L.geoJson(dataLayer, {style: style}).addTo(map);
+
+
 
     //icons
     var trump_head = L.icon({
