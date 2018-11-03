@@ -52,9 +52,84 @@
     var map = L.map('mapContainer').setView([0, 0], 2.3);
 
     var layer = L.tileLayer('https://maps.wikimedia.org/osm-intl/{z}/{x}/{y}{r}.png', {
-      attribution: '<a href="https://wikimediafoundation.org/wiki/Maps_Terms_of_Use">Wikimedia</a><a href="https://www.abc.net.au/news/2018-06-25/chart-of-the-day-trump-global-approval/9899778"</a><a href="https://www.bbc.com/news/world-us-canada-39732845"</a>',
+      attribution: '<a href="https://wikimediafoundation.org/wiki/Maps_Terms_of_Use">Wikimedia</a><a href="https://www.abc.net.au/news/2018-06-25/chart-of-the-day-trump-global-approval/9899778">Data1</a><a href="https://www.bbc.com/news/world-us-canada-39732845">Data2</a>',
  }).addTo(map) //this is the basemap
     
+
+    function highlightFeature(e) {
+    var layer = e.target;
+
+    layer.setStyle({
+        weight: 5,
+        color: '#666',
+        dashArray: '',
+        fillOpacity: 0.7
+    });
+
+    if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+        layer.bringToFront();
+    }
+}
+
+    function resetHighlight(e) {
+    geojson.resetStyle(e.target);
+}
+
+
+    var geojson;
+    // ... our listeners
+    geojson = L.geoJson(...);
+
+    function zoomToFeature(e) {
+    map.fitBounds(e.target.getBounds());
+}
+
+
+    function onEachFeature(feature, layer) {
+    layer.on({
+        mouseover: highlightFeature,
+        mouseout: resetHighlight,
+        click: zoomToFeature
+    });
+}
+
+geojson = L.geoJson(countries.geojson, {
+    style: style,
+    onEachFeature: onEachFeature
+}).addTo(map);
+
+
+
+    var info = L.control();
+
+info.onAdd = function (map) {
+    this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
+    this.update();
+    return this._div;
+};
+
+// method that we will use to update the control based on feature properties passed
+info.update = function (props) {
+    this._div.innerHTML = '<h4>Country</h4>' +  (props ?
+        '<b>' + props.name + '</b><br />' + props.density + ' people / mi<sup>2</sup>'
+        : 'Hover over a state');
+};
+
+info.addTo(map);
+
+
+function highlightFeature(e) {
+    ...
+    info.update(layer.feature.properties);
+}
+
+function resetHighlight(e) {
+    ...
+    info.update();
+}
+
+
+
     function getColor(d) {
     return d == 1 ? '#003366' :
            d == 0 ? '#ffd700' :
@@ -74,25 +149,30 @@
     };
 }
 
+
 var legend = L.control({position: 'bottomright'});
 
 legend.onAdd = function (map) {
 
     var div = L.DomUtil.create('div', 'info legend'),
-    grades = [-1, 0, 1],
+    grades = [-1,0,1],
     labels = ["Does not support Trump's presidency", "Neutral", "Supports Trump's presidency"];
+    from, to;
+   
+   for (var i = -1; i < grades.length; i++) {
+            from = grades[i];
+            to = grades[i + 1];
 
-    // loop through our density intervals and generate a label with a colored square for each interval
-    for (var i = -1; i < grades.length; i++) {
-        div.innerHTML +=
-            '<i style="background:' + getColor(grades[i] + 1) + '"></i> ' +
-            grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
-}
+            labels.push(
+                '<i style="background:' + getColor(from + 1) + '"></i> ' +
+                from + (to ? '&ndash;' + to : '+'));
+        }
 
-return div;
-};
+        div.innerHTML = labels.join('<br>');
+        return div;
+    };
 
-legend.addTo(map);
+    legend.addTo(map);
 
 
 			//add a local geojson file
