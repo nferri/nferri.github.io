@@ -52,7 +52,7 @@
     var map = L.map('mapContainer').setView([0, 0], 2.3);
 
     var layer = L.tileLayer('https://maps.wikimedia.org/osm-intl/{z}/{x}/{y}{r}.png', {
-      attribution: '<a href="https://wikimediafoundation.org/wiki/Maps_Terms_of_Use">Wikimedia</a><a href="https://www.abc.net.au/news/2018-06-25/chart-of-the-day-trump-global-approval/9899778">Data1</a><a href="https://www.bbc.com/news/world-us-canada-39732845">Data2</a>',
+      attribution: '<a href="https://wikimediafoundation.org/wiki/Maps_Terms_of_Use">Wikimedia</a><br><a href="https://www.abc.net.au/news/2018-06-25/chart-of-the-day-trump-global-approval/9899778">Data1</a><br><a href="https://www.bbc.com/news/world-us-canada-39732845">Data2</a>',
  }).addTo(map) //this is the basemap
     
 
@@ -81,16 +81,8 @@ legend.onAdd = function (map) {
 
     var div = L.DomUtil.create('div', 'info legend'),
     grades = [-1,0,1],
-    labels = ['#A80B0B'"Does not support Trump's presidency", '#ffd700'"Neutral", '#003366'"Supports Trump's presidency", '#EAEDF2'"No data"];
+    labels = [#A80B0B"Does not support Trump's presidency", #ffd700"Neutral", #003366"Supports Trump's presidency", #EAEDF2"No data"];
    
-    {
-            labels.push(
-                '<i style="background:' + getColor(from + 1) + '"></i> ' +
-                from + (to ? '&ndash;' + to : '+'));
-        }
-
-        div.innerHTML = labels.join('<br>');
-        return div;
     };
 
     legend.addTo(map);
