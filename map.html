@@ -75,19 +75,6 @@
 }
 
 
-var legend = L.control({position: 'bottomright'});
-
-legend.onAdd = function (map) {
-
-    var div = L.DomUtil.create('div', 'info legend'),
-    grades = [-1,0,1],
-    labels = [#A80B0B"Does not support Trump's presidency", #ffd700"Neutral", #003366"Supports Trump's presidency", #EAEDF2"No data"];
-   
-    };
-
-    legend.addTo(map);
-
-
 			//add a local geojson file
 			//Thanks to https://www.igismap.com/add-load-geojson-file-point-polyline-polygon-map-leaflet-js/ for the tutorial
 			$.getJSON('countries.geojson',function(data){
