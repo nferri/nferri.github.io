@@ -11,7 +11,7 @@
   
 <style> 
   #mapContainer {
-   height: 100vh;
+   height: 100vh; background-color: white;
   }
 
   .info {
@@ -42,6 +42,9 @@
 </style>
 
 <body>
+	<h2>Tweeting to the World</h2>
+	<p>Each Trump image depicts a tweet or comment President Donald Trump has said about or to another country.  The countries in blue are those supporting Trump's presidency, while those in red do not support Trump's presideny. Click around to see the world through Trump's platrform!</p>
+
   <div id="mapContainer"></div>
  
   <script>
@@ -49,7 +52,7 @@
     var map = L.map('mapContainer').setView([0, 0], 2.3);
 
     var layer = L.tileLayer('https://maps.wikimedia.org/osm-intl/{z}/{x}/{y}{r}.png', {
-      attribution: '<a href="https://wikimediafoundation.org/wiki/Maps_Terms_of_Use">Wikimedia</a>',
+      attribution: '<a href="https://wikimediafoundation.org/wiki/Maps_Terms_of_Use">Wikimedia</a><a href="https://www.abc.net.au/news/2018-06-25/chart-of-the-day-trump-global-approval/9899778"</a><a href="https://www.bbc.com/news/world-us-canada-39732845"</a>',
  }).addTo(map) //this is the basemap
     
     function getColor(d) {
