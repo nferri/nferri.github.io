@@ -45,10 +45,10 @@
  
   <script>
     //instantiate leaflet map
-    var map = L.map('mapContainer').setView([0, 0], 2.4);
+    var map = L.map('mapContainer').setView([0, 0], 2.3);
 
-    var layer = L.tileLayer('http://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png', {
-      attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="https://carto.com/attributions">CARTO</a>'
+    var layer = L.tileLayer('https://maps.wikimedia.org/osm-intl/{z}/{x}/{y}{r}.png', {
+      attribution: '<a href="https://wikimediafoundation.org/wiki/Maps_Terms_of_Use">Wikimedia</a>',
  }).addTo(map) //this is the basemap
     
     function getColor(d) {
