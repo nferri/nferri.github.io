@@ -17,22 +17,57 @@
  
     <div id='map'></div>
         <script>
+            //map token
         mapboxgl.accessToken = 'pk.eyJ1IjoibmZlcnJpIiwiYSI6ImNqbzA4amwzdzBiOWszdnFmbjRwcDAwbnAifQ.WGVeV7RnIWMf3DSZTXdwlQ';
 
 
         const map = new mapboxgl.Map({
-
-        container: 'map',
-        style: 'mapbox://styles/nferri/cjo6jst8z1ed82sqn10m048e1',
-        center: [39.000000, 26.431230],
-        zoom: 1.0
-        
+            container: 'map',
+            style: 'mapbox://styles/nferri/cjo6jst8z1ed82sqn10m048e1',
+            center: [39.000000, 26.431230],
+            zoom: 1.0
         });
         
+        //on load map info
+            map.on('load', function(){
+                //add a source layer for earthquakes
+                map.addSource('earthquakes', {
+                    "type": "geojson",
+                    "data": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson"
+                });
+                //add the earthquakes to the map
+                map.addLayer({
+                    "id":"equakes",
+                    "type":"circle",
+                    "source":"earthquakes"
+                });
+
+                //add a handler for clicking/popups 
+                //Thanks to: https://www.mapbox.com/mapbox-gl-js/example/popup-on-click/ 
+                map.on('click', 'equakes', function (e) {
+                    var coordinates = e.features[0].geometry.coordinates.slice();
+                    var description = e.features[0].properties.mag;
+
+                    // Ensure that if the map is zoomed out such that multiple
+                    // copies of the feature are visible, the popup appears
+                    // over the copy being pointed to.
+                    while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+                        coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+                    }
+                    //make the popup
+                    new mapboxgl.Popup()
+                        .setLngLat(coordinates)
+                        .setHTML(description)
+                        .addTo(map);
+
+                });
+            });
+
+
+
         </script>
  
         <button onclick="goBack()">Return</button>
-
         <script>
 
         function goBack() {
