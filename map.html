@@ -35,8 +35,8 @@
 <style> 
   #mapContainer {
     position: center
-   width: 75%; 
-   height: 700px;
+   width: 100%; 
+   height: 800px;
    background-color: white;
   }
 
@@ -51,7 +51,7 @@
               <section class="post">
                 <header class="major">
 
-                    
+
 	<h2 style="color:maroon;">Tweeting the World</h2>
 	<p><strong>Each Trump image depicts a tweet or comment President Donald Trump has said about or to another country.  The countries in <span style="color: blue">blue</span> are those supporting Trump's presidency, <span style="color: gold">yellow</span> are neutral, while those in <span style="color: red">red</span> do not support Trump's presidency. Click around to see the world through Trump's platform!</strong></p>
 
@@ -59,7 +59,7 @@
  
   <script>
     //instantiate leaflet map
-    var map = L.map('mapContainer').setView([39, 34], 2.3);
+    var map = L.map('mapContainer').setView([39, 34], 2.0);
 
     var layer = L.tileLayer('https://maps.wikimedia.org/osm-intl/{z}/{x}/{y}{r}.png', {
       attribution: '<a href="https://wikimediafoundation.org/wiki/Maps_Terms_of_Use">Wikimedia</a><br><a href="https://www.abc.net.au/news/2018-06-25/chart-of-the-day-trump-global-approval/9899778">Data1</a><br><a href="https://www.bbc.com/news/world-us-canada-39732845">Data2</a>',
@@ -291,11 +291,6 @@
 
   </script>
     </script>
-
-    <!-- Copyright -->
-          <div id="copyright">
-            <ul><li>&copy; Natalie Ferri </li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>
-          </div>
  
         <button onclick="goBack()">Return</button>
 
