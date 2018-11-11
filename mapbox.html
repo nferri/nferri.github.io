@@ -12,8 +12,7 @@
   </head>
 
   <style>
-
-#map { width:100%; }
+ #map {width:100%; height: 500px} 
 </style>
 
   <body>
@@ -45,62 +44,21 @@
                 <header class="major">
 
 
-  <h2 style="color:maroon;">Weathered Destruction</h2>
-  <h3>Earthquakes</h3>
-  <p><strong>Watch out <span style="color: blue">now</span> Earthquakes are crazy.</strong></p>
+  <h2 style="color:maroon;">San Francisco Seismic Hazards</h2>
+  <h3>Earthquake hazard zones</h3>
+  <p><strong>The map below shows the land owned by the City of San Francisco in<span style="color: blue">blue.</span> The land covered by orange are those in seismic hazard zones. These areas would be impacted the worst during an earthquake.</strong></p>
 
+    
+<div id='map1'></div>
+<script>
+mapboxgl.accessToken = 'pk.eyJ1IjoibmZlcnJpIiwiYSI6ImNqbzA4amwzdzBiOWszdnFmbjRwcDAwbnAifQ.WGVeV7RnIWMf3DSZTXdwlQ';
+var map = new mapboxgl.Map({
+  container: 'map',
+  style: 'mapbox://styles/nferri/cjocas0g230fi2so6ldfhs82c',
+  center: [-122.433603, 37.761491],
+  zoom: 12.0
+});
 
-    <div id='map'></div>
-    <!-- the script that controls the map -->
-    <script>
-      //my Mapbox token
-      mapboxgl.accessToken = 'pk.eyJ1IjoibmZlcnJpIiwiYSI6ImNqbzA4amwzdzBiOWszdnFmbjRwcDAwbnAifQ.WGVeV7RnIWMf3DSZTXdwlQ';
-      
-      //The map variable
-      var map = new mapboxgl.Map({
-          container: 'map',
-          style: 'mapbox://styles/nferri/cjobs0q0h1b4x2so6m1qzgjw9',
-      });
-      //set the center & zoom of the map
-      map.setCenter([36, 34]);
-      map.setZoom(2);
-
-      //on map load, do some stuff
-      map.on('load', function(){
-        //add a source layer for earthquakes
-        map.addSource('earthquakes', {
-              "type": "geojson",
-              "data": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson"
-          });
-          //add the earthquakes to the map
-          map.addLayer({
-            "id":"equakes",
-            "type":"circle",
-            "source":"earthquakes"
-          });
-            // https://data.nasa.gov/resource/y77d-th95.geojson POSSIBLE DATA
-        //add a handler for clicking/popups 
-        //Thanks to: https://www.mapbox.com/mapbox-gl-js/example/popup-on-click/ 
-        map.on('click', 'equakes', function (e) {
-              var coordinates = e.features[0].geometry.coordinates.slice();
-              var description = e.features[0].properties.mag;
-
-              // Ensure that if the map is zoomed out such that multiple
-              // copies of the feature are visible, the popup appears
-              // over the copy being pointed to.
-              while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
-                  coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
-              }
-              //make the popup
-              new mapboxgl.Popup()
-                  .setLngLat(coordinates)
-                  .setHTML(description)
-                  .addTo(map);
-
-          });
-      });
-
-       </script>
     </script>
 
 
