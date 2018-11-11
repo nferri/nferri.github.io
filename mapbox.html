@@ -1,14 +1,51 @@
-!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <!-- the mapbox libraries -->
     <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.50.0/mapbox-gl.js'></script>
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.50.0/mapbox-gl.css' rel='stylesheet' />
+    <title>Mapbox</title>
+  <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
   </head>
+  <body class="is-preload">
+
+    <!-- Wrapper -->
+      <div id="wrapper">
+
+        <!-- Header -->
+          <header id="header">
+            <a href="index.html" class="logo">Natalie Ferri</a>
+          </header>
+
+        <!-- Nav -->
+          <nav id="nav">
+            <ul class="links">
+              <li class="active"><a href="index.html">Home</a></li>
+              <li><a href="map.html">Tweets</a></li>
+              <li><a href="TacomaFP.html">Tacoma Flood Plains</a></li>
+              <li><a href="resume.html">Resume</a></li>
+            </ul>
+          </nav>
+
+
 
   <body>
-    <!-- the div for the map -->
-    <!-- note the style is in-line, we have been putting it in the header. Outcome is the same -->
+    <!-- Main -->
+          <div id="main">
+
+            <!-- Post -->
+              <section class="post">
+                <header class="major">
+
+
+  <h2 style="color:maroon;">Weathered Destruction</h2>
+  <h4>Earthquakes</h4>
+  <p><strong>Watch out <span style="color: blue">now</span> Earthquakes are crazy.</strong></p>
+
+
     <div id='map' style='width: 800px; height: 800px;'></div>
     <!-- the script that controls the map -->
     <script>
@@ -58,6 +95,29 @@
 
           });
       });
+
+       </script>
     </script>
+
+ <br>
+        <button onclick="goBack()">Return</button>
+
+        <script>
+
+        function goBack() {
+        window.history.back();
+        }
+
+        </script>
+
+        <!-- Scripts -->
+      <script src="assets/js/jquery.min.js"></script>
+      <script src="assets/js/jquery.scrollex.min.js"></script>
+      <script src="assets/js/jquery.scrolly.min.js"></script>
+      <script src="assets/js/browser.min.js"></script>
+      <script src="assets/js/breakpoints.min.js"></script>
+      <script src="assets/js/util.js"></script>
+      <script src="assets/js/main.js"></script>
+
   </body>
-</html>
+</html> 
