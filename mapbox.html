@@ -56,10 +56,12 @@
                 <header class="major">
                   <h2 style="color: maroon;">San Francisco Seismic Awareness</h2>
                   <h3>Earthquake hazard zones</h3>
-                  <p><strong>The map below shows the land owned by the City of San Francisco in<span style="color: blue"> blue.</span> The land covred by orange are those in seismic hazard zones. These areas would be impacted the worst during an earthquake.</strong></p>
+                  <p><strong>The map below shows the land owned by the City of San Francisco overlayed with orange representing the seismic hazard zones. These areas would be impacted the worst during an earthquake.</strong></p>
 
                 </header>
                   <div id='map'></div>
+                  <div class='map-overlay' id='features'><h2>San Francisco, CA</h2></div>
+                  <div class='map-overlay' id='legend'></div>
                     <script>
                     mapboxgl.accessToken = 'pk.eyJ1IjoibmZlcnJpIiwiYSI6ImNqbzA4amwzdzBiOWszdnFmbjRwcDAwbnAifQ.WGVeV7RnIWMf3DSZTXdwlQ';
                     const map = new mapboxgl.Map({
@@ -67,6 +69,10 @@
                     style: 'mapbox://styles/nferri/cjocas0g230fi2so6ldfhs82c',
                     center: [-122.433603, 37.761491],
                     zoom: 11.0
+                    });
+                    map.on('load', function() {
+                      var layers = ['City owned land', 'Seismic hazard zones'];
+                      var colors = ['#0d1a45', '#f15e09'];
                     });
                   </script>
 
