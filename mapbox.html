@@ -68,10 +68,15 @@ body * {
                     "source":"earthquakes"
                 });
 
-var map = new mapboxgl.Compare(beforeMap, afterMap, {
+            // Add zoom and rotation controls to the map.
+            afterMap.addControl(new mapboxgl.NavigationControl());
+
+    var map = new mapboxgl.Compare(beforeMap, afterMap, {
     // Set this to enable comparing two maps by mouse movement:
     // mousemove: true
 });
+
+
        });        
 
 </script>
