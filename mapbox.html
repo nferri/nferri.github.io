@@ -44,7 +44,7 @@ body * {
                     container: 'before',
                     style: 'mapbox://styles/nferri/cjocdihmd330u2rpft5kh43um',
                     center: [-122.453571, 37.766976],
-                    zoom: 11.9
+                    zoom: 10
                     });
     
 
@@ -52,7 +52,7 @@ body * {
                     container: 'after',
                     style: 'mapbox://styles/nferri/cjoce3zge33z12rpi3ene5z07',
                     center: [-122.453571, 37.766976],
-                    zoom: 11.9
+                    zoom: 10
                      });
 
                 afterMap.on('load', function(){
@@ -68,30 +68,11 @@ body * {
                     "source":"earthquakes"
                 });
 
-
-                //add a handler for clicking/popups 
-                //Thanks to: https://www.mapbox.com/mapbox-gl-js/example/popup-on-click/ 
-                afterMap.on('click', 'equakes', function (e) {
-                    var coordinates = e.features[0].geometry.coordinates.slice();
-                    var description = e.features[0].properties.mag;
-                    var description = e.features[0].properties.place;
-
-                    // Ensure that if the map is zoomed out such that multiple
-                    // copies of the feature are visible, the popup appears
-                    // over the copy being pointed to.
-                    while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
-                        coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
-                    }
-                    //make the popup
-                    new mapboxgl.Popup()
-                        .setLngLat(coordinates)
-                        .setHTML(description)
-                        .addTo(map);
-
-
 var map = new mapboxgl.Compare(beforeMap, afterMap, {
     // Set this to enable comparing two maps by mouse movement:
     // mousemove: true
+});
+       });        
 
 </script>
 </body>
