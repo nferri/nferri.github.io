@@ -53,8 +53,9 @@ body * {
                     style: 'mapbox://styles/nferri/cjoce3zge33z12rpi3ene5z07',
                     center: [-122.453571, 37.766976],
                     zoom: 11.9
+                     });
 
-                    (afterMap.on('load', function(){
+                afterMap.on('load', function(){
                 //add a source layer for earthquakes
                 afterMap.addSource('earthquakes', {
                     "type": "geojson",
