@@ -29,15 +29,14 @@
               <li><a href="resume.html">Resume</a></li>
             </ul>
           </nav>
+ </head>
 
     <style>
             #map { position: center
                     width: 100%; 
-                    height: 700px;
-                    background-color: white; }
+                    height: 700px; }
     </style>
-        </head>
-    
+
     <body>
  
             <!-- Main -->
@@ -49,7 +48,7 @@
 
 
     <h2 style="color:maroon;">Earthquakes & More</h2>
-    <p><strong>Earthquakes and fires cause chaos. <span style="color: blue">blue moon</span> are those cooling down, while those in <span style="color: red">red</span> are just heating up!</strong></p>
+    <p><strong>Earthquakes and fires cause chaos. <span style="color: blue">Significant earthquakes in the past 30 days</span> Then there are fires burning <span style="color: red">red</span> and things are heating up!</strong></p>
 
     <div id='map'></div>
         <script>
@@ -69,7 +68,7 @@
                 //add a source layer for earthquakes
                 map.addSource('earthquakes', {
                     "type": "geojson",
-                    "data": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson"
+                    "data": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/significant_month.geojson"
                 });
                 //add the earthquakes to the map
                 map.addLayer({
@@ -98,7 +97,6 @@
 
                 });
             });
-
 
         </script>
  
