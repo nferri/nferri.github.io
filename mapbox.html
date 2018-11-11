@@ -10,6 +10,12 @@
     <link rel="stylesheet" href="assets/css/main.css" />
     <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
   </head>
+
+  <style>
+body { margin:0; padding:0; }
+#map { position:absolute; top:0; bottom:0; width:100%; }
+</style>
+
   <body>
   <body class="is-preload">
 
@@ -44,7 +50,7 @@
   <p><strong>Watch out <span style="color: blue">now</span> Earthquakes are crazy.</strong></p>
 
 
-    <div id='map' style='height: 70vh;'></div>
+    <div id='map'></div>
     <!-- the script that controls the map -->
     <script>
       //my Mapbox token
@@ -72,7 +78,7 @@
             "type":"circle",
             "source":"earthquakes"
           });
-
+            // https://data.nasa.gov/resource/y77d-th95.geojson POSSIBLE DATA
         //add a handler for clicking/popups 
         //Thanks to: https://www.mapbox.com/mapbox-gl-js/example/popup-on-click/ 
         map.on('click', 'equakes', function (e) {
@@ -96,6 +102,7 @@
 
        </script>
     </script>
+
 
  <br>
         <button onclick="goBack()">Return</button>
