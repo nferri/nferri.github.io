@@ -39,11 +39,12 @@ body * {
 <div id='after' class='map'></div>
 <script>
                     mapboxgl.accessToken = 'pk.eyJ1IjoibmZlcnJpIiwiYSI6ImNqbzA4amwzdzBiOWszdnFmbjRwcDAwbnAifQ.WGVeV7RnIWMf3DSZTXdwlQ';
+
                     var beforeMap = new mapboxgl.Map({
                     container: 'before',
                     style: 'mapbox://styles/nferri/cjocdihmd330u2rpft5kh43um',
                     center: [-122.453571, 37.766976],
-zoom: 11.9
+                    zoom: 11.9
                     });
     
 
@@ -51,15 +52,28 @@ zoom: 11.9
                     container: 'after',
                     style: 'mapbox://styles/nferri/cjoce3zge33z12rpi3ene5z07',
                     center: [-122.453571, 37.766976],
-zoom: 11.9
-                    });
+                    zoom: 11.9
+
+                    (afterMap.on('load', function(){
+                //add a source layer for earthquakes
+                afterMap.addSource('earthquakes', {
+                    "type": "geojson",
+                    "data": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson"
+                });
+                //add the earthquakes to the map
+                afterMap.addLayer({
+                    "id":"equakes",
+                    "type":"circle",
+                    "source":"earthquakes"
+                });
+
 
 var map = new mapboxgl.Compare(beforeMap, afterMap, {
     // Set this to enable comparing two maps by mouse movement:
     // mousemove: true
 });
+});
 
 </script>
-
 </body>
 </html>
