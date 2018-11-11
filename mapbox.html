@@ -1,100 +1,64 @@
 <!DOCTYPE HTML>
-<!--
-  Massively by HTML5 UP
-  html5up.net | @ajlkn
-  Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
 <html>
   <head>
     <title>Mapbox</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.51.0/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.51.0/mapbox-gl.css' rel='stylesheet' />
+    <style>
+        body { margin:0; padding:0; }
+        #map { position:absolute; top:0; bottom:0; width:100%; }
+    </style>
+</head>
+<body>
 
-    <link rel="stylesheet" href="assets/css/main.css" />
-    <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+<style>
+body {
+    overflow: hidden;
+}
 
-     <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
-  <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.49.0/mapbox-gl.js'></script>
-  <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.49.0/mapbox-gl.css' rel='stylesheet' />
+body * {
+   -webkit-touch-callout: none;
+     -webkit-user-select: none;
+        -moz-user-select: none;
+         -ms-user-select: none;
+             user-select: none;
+}
 
-  </head>
-  <body class="is-preload">
-
-    <!-- Wrapper -->
-      <div id="wrapper">
-
-        <!-- Header -->
-          <header id="header">
-            <a href="index.html" class="logo">Natalie Ferri</a>
-          </header>
-
-         <!-- Nav -->
-          <nav id="nav">
-            <ul class="links">
-              <li class="active"><a href="index.html">Home</a></li>
-              <li><a href="map.html">Tweets</a></li>
-              <li><a href="TacomaFP.html">Tacoma Flood Plains</a></li>
-              <li><a href="resume.html">Resume</a></li>
-            </ul>
-          </nav>
-          
-<style> 
-  #map {
-  position: center
-   width: 100%; 
-   height: 600px;
-   background-color: white;
-  }
-
+.map {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+}
 </style>
+<script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-compare/v0.1.0/mapbox-gl-compare.js'></script>
+<link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-compare/v0.1.0/mapbox-gl-compare.css' type='text/css' />
 
-        <!-- Main -->
-          <div id="main">
-
-            <!-- Post -->
-              <section class="post">
-                <header class="major">
-                  <h2 style="color: maroon;">San Francisco Seismic Awareness</h2>
-                  <h3>Earthquake hazard zones</h3>
-                  <p><strong>The map below shows the land owned by the City of San Francisco overlayed with orange representing the seismic hazard zones. These areas would be impacted the worst during an earthquake.</strong></p>
-
-                </header>
-                  <div id='map'></div>
-                  <div class='map-overlay' id='features'><h2>San Francisco, CA</h2></div>
-                  <div class='map-overlay' id='legend'></div>
-                    <script>
+<div id='before' class='map'></div>
+<div id='after' class='map'></div>
+<script>
                     mapboxgl.accessToken = 'pk.eyJ1IjoibmZlcnJpIiwiYSI6ImNqbzA4amwzdzBiOWszdnFmbjRwcDAwbnAifQ.WGVeV7RnIWMf3DSZTXdwlQ';
-                    const map = new mapboxgl.Map({
-                    container: 'map',
-                    style: 'mapbox://styles/nferri/cjocas0g230fi2so6ldfhs82c',
+                    var beforeMap = new mapboxgl.Map({
+                    container: 'before',
+                    style: 'mapbox://styles/nferri/cjocdihmd330u2rpft5kh43um',
                     center: [-122.433603, 37.761491],
                     zoom: 11.0
                     });
-                    map.on('load', function() {
-                      var layers = ['City owned land', 'Seismic hazard zones'];
-                      var colors = ['#0d1a45', '#f15e09'];
+    
+
+                    var afterMap = new mapboxgl.Map({
+                    container: 'after',
+                    style: 'mapbox://styles/nferri/cjoce3zge33z12rpi3ene5z07',
+                    center: [-122.433603, 37.761491],
+                    zoom: 11.0
                     });
-                  </script>
 
-          </div>
+var map = new mapboxgl.Compare(beforeMap, afterMap, {
+    // Set this to enable comparing two maps by mouse movement:
+    // mousemove: true
+});
+</script>
 
-        <!-- Copyright -->
-          <div id="copyright">
-            <ul><li>&copy; Natalie Ferri </li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>
-          </div>
-
-      </div>
-
-    <!-- Scripts -->
-      <script src="assets/js/jquery.min.js"></script>
-      <script src="assets/js/jquery.scrollex.min.js"></script>
-      <script src="assets/js/jquery.scrolly.min.js"></script>
-      <script src="assets/js/browser.min.js"></script>
-      <script src="assets/js/breakpoints.min.js"></script>
-      <script src="assets/js/util.js"></script>
-      <script src="assets/js/main.js"></script>
-
-  </body>
-</html
-
-
+</body>
+</html>
