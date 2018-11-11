@@ -5,12 +5,6 @@
     <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
     <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.51.0/mapbox-gl.js'></script>
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.51.0/mapbox-gl.css' rel='stylesheet' />
-    <style>
-        body { margin:0; padding:0; }
-        #map { position:absolute; top:0; bottom:0; width:100%; }
-    </style>
-</head>
-<body>
 
 <style>
 body {
@@ -31,14 +25,40 @@ body * {
     bottom: 0;
     width: 100%;
 }
+
+#fly {
+        display: block;
+        position: relative;
+        margin: 0px auto;
+        width: 10%;
+        height: 20px;
+        padding: 5px;
+        border: none;
+        border-radius: 3px;
+        font-size: 10px;
+        text-align: center;
+        color: #fff;
+        background: #6E6E6E;
+    }
+
+    .mapboxgl-popup {
+        max-width: 400px;
+        font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    }
+
+
+
 </style>
 <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-compare/v0.1.0/mapbox-gl-compare.js'></script>
 <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-compare/v0.1.0/mapbox-gl-compare.css' type='text/css' />
 
 <div id='before' class='map'></div>
 <div id='after' class='map'></div>
+<button id='fly'>Recenter</button>
+
 <script>
                     mapboxgl.accessToken = 'pk.eyJ1IjoibmZlcnJpIiwiYSI6ImNqbzA4amwzdzBiOWszdnFmbjRwcDAwbnAifQ.WGVeV7RnIWMf3DSZTXdwlQ';
+
 
                     var beforeMap = new mapboxgl.Map({
                     container: 'before',
@@ -61,6 +81,7 @@ body * {
                     "type": "geojson",
                     "data": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.geojson"
                 });
+
                 //add the earthquakes to the map
                 afterMap.addLayer({
                     "id":"equakes",
@@ -68,14 +89,35 @@ body * {
                     "source":"earthquakes"
                 });
 
+                //Thanks to: https://www.mapbox.com/mapbox-gl-js/example/popup-on-click/ 
+                afterMap.on('click', 'equakes', function (e) {
+                    var coordinates = e.features[0].geometry.coordinates.slice();
+                    var description = e.features[0].properties.title + e.features[0].properties.url;
+                    
+                    // Ensure that if the map is zoomed out such that multiple
+                    // copies of the feature are visible, the popup appears
+                    // over the copy being pointed to.
+                    while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+                        coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+                    }
+                    //make the popup
+                    new mapboxgl.Popup()
+                        .setLngLat(coordinates)
+                        .setHTML(description)
+                        .addTo(afterMap);
+
+                         });
+    
+
             // Add zoom and rotation controls to the map.
-            afterMap.addControl(new mapboxgl.NavigationControl());
+            afterMap.addControl(new mapboxgl.NavigationControl()); document.getElementById('fly').addEventListener('click', function () {
+           
+ });
 
     var map = new mapboxgl.Compare(beforeMap, afterMap, {
     // Set this to enable comparing two maps by mouse movement:
     // mousemove: true
 });
-
 
        });        
 
