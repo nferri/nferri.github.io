@@ -59,7 +59,7 @@ body * {
                 //add a source layer for earthquakes
                 afterMap.addSource('earthquakes', {
                     "type": "geojson",
-                    "data": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_month.geojson"
+                    "data": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.geojson"
                 });
                 //add the earthquakes to the map
                 afterMap.addLayer({
@@ -67,6 +67,26 @@ body * {
                     "type":"circle",
                     "source":"earthquakes"
                 });
+
+
+                //add a handler for clicking/popups 
+                //Thanks to: https://www.mapbox.com/mapbox-gl-js/example/popup-on-click/ 
+                afterMap.on('click', 'equakes', function (e) {
+                    var coordinates = e.features[0].geometry.coordinates.slice();
+                    var description = e.features[0].properties.mag;
+                    var description = e.features[0].properties.place;
+
+                    // Ensure that if the map is zoomed out such that multiple
+                    // copies of the feature are visible, the popup appears
+                    // over the copy being pointed to.
+                    while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+                        coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+                    }
+                    //make the popup
+                    new mapboxgl.Popup()
+                        .setLngLat(coordinates)
+                        .setHTML(description)
+                        .addTo(map);
 
 
 var map = new mapboxgl.Compare(beforeMap, afterMap, {
