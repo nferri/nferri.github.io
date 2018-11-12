@@ -5,6 +5,9 @@
     <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
     <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.51.0/mapbox-gl.js'></script>
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.51.0/mapbox-gl.css' rel='stylesheet' />
+    <!-- the Geocoding Libaries -->
+		<script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.3.0/mapbox-gl-geocoder.min.js'></script>
+		<link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.3.0/mapbox-gl-geocoder.css' type='text/css' />
 
 <style>
 body {
@@ -47,13 +50,13 @@ body * {
     }
 
 
-
 </style>
 <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-compare/v0.1.0/mapbox-gl-compare.js'></script>
 <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-compare/v0.1.0/mapbox-gl-compare.css' type='text/css' />
 
 <div id='before' class='map'></div>
 <div id='after' class='map'></div>
+<nav id="menu"></nav>
 <button id='fly'>Recenter</button>
 
 <script>
@@ -66,7 +69,6 @@ body * {
                     center: [-122.453571, 37.766976],
                     zoom: 10
                     });
-    
 
                     var afterMap = new mapboxgl.Map({
                     container: 'after',
@@ -94,6 +96,7 @@ body * {
                     var coordinates = e.features[0].geometry.coordinates.slice();
                     var description = e.features[0].properties.title + e.features[0].properties.url;
                     
+                    
                     // Ensure that if the map is zoomed out such that multiple
                     // copies of the feature are visible, the popup appears
                     // over the copy being pointed to.
@@ -108,6 +111,11 @@ body * {
 
                          });
     
+
+    		//adding the Geocoding controls
+			beforeMap.addControl(new MapboxGeocoder({
+    			accessToken: mapboxgl.accessToken
+			}));
 
             // Add zoom and rotation controls to the map.
             afterMap.addControl(new mapboxgl.NavigationControl()); document.getElementById('fly').addEventListener('click', function () {
