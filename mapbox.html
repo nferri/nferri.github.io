@@ -6,14 +6,13 @@
     <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.51.0/mapbox-gl.js'></script>
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.51.0/mapbox-gl.css' rel='stylesheet' />
     <!-- the Geocoding Libaries -->
-		<script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.3.0/mapbox-gl-geocoder.min.js'></script>
-		<link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.3.0/mapbox-gl-geocoder.css' type='text/css' />
+        <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.3.0/mapbox-gl-geocoder.min.js'></script>
+        <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.3.0/mapbox-gl-geocoder.css' type='text/css' />
 
 <style>
 body {
     overflow: hidden;
 }
-
 body * {
    -webkit-touch-callout: none;
      -webkit-user-select: none;
@@ -21,21 +20,30 @@ body * {
          -ms-user-select: none;
              user-select: none;
 }
-
 .map {
     position: absolute;
     top: 0;
     bottom: 0;
     width: 100%;
 }
-
-
+#fly {
+        display: block;
+        position: relative;
+        margin: 0px auto;
+        width: 10%;
+        height: 20px;
+        padding: 5px;
+        border: none;
+        border-radius: 3px;
+        font-size: 10px;
+        text-align: center;
+        color: #fff;
+        background: #6E6E6E;
+    }
     .mapboxgl-popup {
         max-width: 400px;
         font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
     }
-
-
 </style>
 <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-compare/v0.1.0/mapbox-gl-compare.js'></script>
 <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-compare/v0.1.0/mapbox-gl-compare.css' type='text/css' />
@@ -43,10 +51,10 @@ body * {
 <div id='before' class='map'></div>
 <div id='after' class='map'></div>
 <nav id="menu"></nav>
+<button id='fly'>Recenter</button>
 
 <script>
                     mapboxgl.accessToken = 'pk.eyJ1IjoibmZlcnJpIiwiYSI6ImNqbzA4amwzdzBiOWszdnFmbjRwcDAwbnAifQ.WGVeV7RnIWMf3DSZTXdwlQ';
-
 
                     var beforeMap = new mapboxgl.Map({
                     container: 'before',
@@ -68,18 +76,16 @@ body * {
                     "type": "geojson",
                     "data": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.geojson"
                 });
-
                 //add the earthquakes to the map
                 afterMap.addLayer({
                     "id":"equakes",
                     "type":"circle",
                     "source":"earthquakes"
                 });
-
                 //Thanks to: https://www.mapbox.com/mapbox-gl-js/example/popup-on-click/ 
                 afterMap.on('click', 'equakes', function (e) {
                     var coordinates = e.features[0].geometry.coordinates.slice();
-                    var description = "<p>Magnitude and Location: " + e.features[0].properties.title + "</p> <p>Event Webpage: " + e.features[0].properties.url + "</p>";
+                    var description = "<p>Title: " + e.features[0].properties.title + "</p> <p>URL: " + e.features[0].properties.url + "</p>";
                     
                     
                     // Ensure that if the map is zoomed out such that multiple
@@ -93,27 +99,21 @@ body * {
                         .setLngLat(coordinates)
                         .setHTML(description)
                         .addTo(afterMap);
-
                          });
-
-
-    		//adding the Geocoding controls
-			beforeMap.addControl(new MapboxGeocoder({
-    			accessToken: mapboxgl.accessToken
-			}));
-
+    
+            //adding the Geocoding controls
+            beforeMap.addControl(new MapboxGeocoder({
+                accessToken: mapboxgl.accessToken
+            }));
             // Add zoom and rotation controls to the map.
             afterMap.addControl(new mapboxgl.NavigationControl()); document.getElementById('fly').addEventListener('click', function () {
            
  });
-
     var map = new mapboxgl.Compare(beforeMap, afterMap, {
     // Set this to enable comparing two maps by mouse movement:
     // mousemove: true
 });
-
        });        
-
 </script>
 </body>
 </html>
