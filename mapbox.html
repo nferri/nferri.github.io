@@ -26,20 +26,7 @@ body * {
     bottom: 0;
     width: 100%;
 }
-#fly {
-        display: block;
-        position: relative;
-        margin: 0px auto;
-        width: 10%;
-        height: 20px;
-        padding: 5px;
-        border: none;
-        border-radius: 3px;
-        font-size: 10px;
-        text-align: center;
-        color: #fff;
-        background: #6E6E6E;
-    }
+
     .mapboxgl-popup {
         max-width: 400px;
         font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
@@ -51,7 +38,7 @@ body * {
 <div id='before' class='map'></div>
 <div id='after' class='map'></div>
 <nav id="menu"></nav>
-<button id='fly'>Recenter</button>
+<button id='fly'></button>
 
 <script>
                     mapboxgl.accessToken = 'pk.eyJ1IjoibmZlcnJpIiwiYSI6ImNqbzA4amwzdzBiOWszdnFmbjRwcDAwbnAifQ.WGVeV7RnIWMf3DSZTXdwlQ';
