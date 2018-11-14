@@ -72,7 +72,7 @@ body * {
                 //Thanks to: https://www.mapbox.com/mapbox-gl-js/example/popup-on-click/ 
                 afterMap.on('click', 'equakes', function (e) {
                     var coordinates = e.features[0].geometry.coordinates.slice();
-                    var description = "<p> Title: " + e.features[0].properties.title + " <br> Event Website: <a href=' " + e.features[0].properties.url + "'> Earthquake Event</a></p>";
+                    var description = "<p> Magnitude and Location: " + e.features[0].properties.title + " <br> Event Website: <a href=' " + e.features[0].properties.url + "'> Earthquake Event</a></p>";
                     
                     
                     // Ensure that if the map is zoomed out such that multiple
