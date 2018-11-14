@@ -29,20 +29,6 @@ body * {
     width: 100%;
 }
 
-#fly {
-        display: block;
-        position: relative;
-        margin: 0px auto;
-        width: 10%;
-        height: 20px;
-        padding: 5px;
-        border: none;
-        border-radius: 3px;
-        font-size: 10px;
-        text-align: center;
-        color: #fff;
-        background: #6E6E6E;
-    }
 
     .mapboxgl-popup {
         max-width: 400px;
@@ -57,7 +43,6 @@ body * {
 <div id='before' class='map'></div>
 <div id='after' class='map'></div>
 <nav id="menu"></nav>
-<button id='fly'>Recenter</button>
 
 <script>
                     mapboxgl.accessToken = 'pk.eyJ1IjoibmZlcnJpIiwiYSI6ImNqbzA4amwzdzBiOWszdnFmbjRwcDAwbnAifQ.WGVeV7RnIWMf3DSZTXdwlQ';
@@ -94,7 +79,7 @@ body * {
                 //Thanks to: https://www.mapbox.com/mapbox-gl-js/example/popup-on-click/ 
                 afterMap.on('click', 'equakes', function (e) {
                     var coordinates = e.features[0].geometry.coordinates.slice();
-                    var description = "<p>Title: " + e.features[0].properties.title + "</p> <p>URL: " + e.features[0].properties.url + "</p>";
+                    var description = "<p>Magnitude and Location: " + e.features[0].properties.title + "</p> <p>Event Webpage: " + e.features[0].properties.url + "</p>";
                     
                     
                     // Ensure that if the map is zoomed out such that multiple
@@ -110,7 +95,7 @@ body * {
                         .addTo(afterMap);
 
                          });
-    
+
 
     		//adding the Geocoding controls
 			beforeMap.addControl(new MapboxGeocoder({
