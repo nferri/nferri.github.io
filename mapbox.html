@@ -9,7 +9,17 @@
         <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.3.0/mapbox-gl-geocoder.min.js'></script>
         <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.3.0/mapbox-gl-geocoder.css' type='text/css' />
 
+
+ <style>
+        body { margin:0; padding:0; }
+        #map { position:absolute; top:0; bottom:0; width:100%; }
+</style>       
+</head>
+<body>
+
+    
 <style>
+
 body {
     overflow: hidden;
 }
@@ -32,6 +42,8 @@ body * {
         font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
     }
 </style>
+
+
 <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-compare/v0.1.0/mapbox-gl-compare.js'></script>
 <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-compare/v0.1.0/mapbox-gl-compare.css' type='text/css' />
 
@@ -47,14 +59,14 @@ body * {
                     container: 'before',
                     style: 'mapbox://styles/nferri/cjocdihmd330u2rpft5kh43um',
                     center: [-122.453571, 37.766976],
-                    zoom: 10
+                    zoom: 11
                     });
 
                     var afterMap = new mapboxgl.Map({
                     container: 'after',
                     style: 'mapbox://styles/nferri/cjoce3zge33z12rpi3ene5z07',
                     center: [-122.453571, 37.766976],
-                    zoom: 10
+                    zoom: 11
                      });
 
                 afterMap.on('load', function(){
