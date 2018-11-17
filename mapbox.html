@@ -17,7 +17,7 @@
 </head>
 <body>
 
-    
+
 <style>
 
 body {
@@ -37,10 +37,10 @@ body * {
     width: 100%;
 }
 
-    .mapboxgl-popup {
+.mapboxgl-popup {
         max-width: 400px;
         font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
-    }
+}
 </style>
 
 
@@ -79,8 +79,17 @@ body * {
                 afterMap.addLayer({
                     "id":"equakes",
                     "type":"circle",
-                    "source":"earthquakes"
+                    "source":"earthquakes",
+                    "paint": {
+                            "circle-color": "#ff9966",
+                            "circle-opacity": .75,
+                            "circle-radius": 8,
+                            "circle-stroke-color": '#b30000',
+                            "circle-stroke-width": 2,
+                            "circle-stroke-opacity": 0.75
+                        }
                 });
+
                 //Thanks to: https://www.mapbox.com/mapbox-gl-js/example/popup-on-click/ 
                 afterMap.on('click', 'equakes', function (e) {
                     var coordinates = e.features[0].geometry.coordinates.slice();
