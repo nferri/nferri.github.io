@@ -1,7 +1,0 @@
-{
-    "type": "FeatureCollection",
-    
-    "features": [{"type": "Feature", "properties": { "Name": "7.9M 1906 San Francisco Earthquake", "URL": "https://earthquake.usgs.gov/earthquakes/events/1906calif/18april/" }, "geometry": { "type": "Point", "coordinates": [-122.55, 37.75] } },
-     "features": [{"type": "Feature", "properties": { "Name": "6.9M 1989 Loma Prieta Earthquake", "URL": "https://www.history.com/topics/natural-disasters-and-environment/1989-san-francisco-earthquake" }, "geometry": { "type": "Point", "coordinates": [-121.88, 37.04] } }
-         
-  }
