@@ -175,7 +175,7 @@ $.getJSON('states.geojson',function(data){
     });
   }
 
-  geojson = L.geoJson(states, {
+  geojson = L.geoJson(datalayer, {
     style: style,
     onEachFeature: onEachFeature
   }).addTo(map);
