@@ -175,10 +175,7 @@ $.getJSON('states.geojson',function(data){
     });
   }
 
-  geojson = L.geoJson(datalayer, {
-    style: style,
-    onEachFeature: onEachFeature
-  }).addTo(map);
+
 
   map.attributionControl.addAttribution('Population data &copy; <a href="http://census.gov/">US Census Bureau</a>');
 
