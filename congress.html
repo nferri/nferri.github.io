@@ -1,18 +1,18 @@
-<!doctype html>
-
-<html lang="en">
-<head>
-  <title>Congress</title>
-  <meta charset="utf-8" />
+<!DOCTYPE HTML>
+<!--
+  Massively by HTML5 UP
+  html5up.net | @ajlkn
+  Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+  <head>
+    <title>Faithful 1%'ers</title>
+    <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="assets/css/main.css" />
     <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.51.0/mapbox-gl.js'></script>
-    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.51.0/mapbox-gl.css' rel='stylesheet' />
-
-    </head>
-   
-    <body class="is-preload">
+  </head>
+  <body class="is-preload">
 
     <!-- Wrapper -->
       <div id="wrapper">
@@ -26,8 +26,8 @@
           <nav id="nav">
             <ul class="links">
               <li class="active"><a href="index.html">Home</a></li>
-              <li><a href="mapbox.html" target="_blank">SF Earthquakes</a></li>
               <li><a href="map.html">Presidential Tweets</a></li>
+              <li><a href="mapbox.html" target="_blank">SF Earthquakes</a></li>
               <li><a href="TacomaFP.html">Tacoma Flood Plains</a></li>
               <li><a href="tacoma.html">Tacoma: Funky Town</a></li>
               <li><a href="resume.html">Resume</a></li>
@@ -46,89 +46,43 @@
 
 <body>
 
-    <!-- Main -->
+        <!-- Main -->
           <div id="main">
 
             <!-- Post -->
               <section class="post">
                 <header class="major">
-
-<h1>This is a<br />
-                  Generic Page</h1>
+                  <h1>Congressional Net Worth is Too Damn High</h1>
                   <p>Aenean ornare velit lacus varius enim ullamcorper proin aliquam<br />
                   facilisis ante sed etiam magna interdum congue. Lorem ipsum dolor<br />
                   amet nullam sed etiam veroeros.</p>
                 </header>
                 <div class="image main"><img src="images/pic01.jpg" alt="" /></div>
-                <p>Donec nullam.</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis dapibus rutrum facili</p>
-             
+                <p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis. Praesent rutrum sem diam, vitae egestas enim auctor sit amet. Pellentesque leo mauris, consectetur id ipsum sit amet, fergiat. Pellentesque in mi eu massa lacinia malesuada et a elit. Donec urna ex, lacinia in purus ac, pretium pulvinar mauris. Nunc lorem mauris, fringilla in aliquam at, euismod in lectus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Curabitur sapien risus, commodo eget turpis at, elementum convallis enim turpis, lorem ipsum dolor sit amet nullam.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis dapibus rutrum facilisis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Etiam tristique libero eu nibh porttitor fermentum. Nullam venenatis erat id vehicula viverra. Nunc ultrices eros ut ultricies condimentum. Mauris risus lacus, blandit sit amet venenatis non, bibendum vitae dolor. Nunc lorem mauris, fringilla in aliquam at, euismod in lectus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In non lorem sit amet elit placerat maximus. Pellentesque aliquam maximus risus. Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis. Praesent rutrum sem diam, vitae egestas enim auctor sit amet. Pellentesque leo mauris, consectetur id ipsum.</p>
 
-	<h2 style="color:maroon;">Congress </h2>
-	<p><strong>Each platform!</strong></p>
- 
+                <h2><font color="white">Real-Time Earthquake Data<br> from <a href="https://www.usgs.gov/" target="_blank">USGS</font></a></h2>
+                <p>
+              
+        <iframe src="CongMap.html" width="900px" height="600px" scrolling="no" style="overflow:hidden" ></iframe>
 
-        <div id='map'></div>
-<script>
-    mapboxgl.accessToken = 'pk.eyJ1IjoibmZlcnJpIiwiYSI6ImNqbzA4amwzdzBiOWszdnFmbjRwcDAwbnAifQ.WGVeV7RnIWMf3DSZTXdwlQ';
-    var map = new mapboxgl.Map({
-      container: 'map', // container id
-      style: 'mapbox://styles/mapbox/streets-v10', // stylesheet location
-      center: [-96.1360,39.6523], // starting position [lng, lat]
-      zoom: 3 // starting zoom
-    });
+          <h2><font color="white">Live Volcano Data from <br><a target="_blank" href="https://data.humdata.org/"> The Humanitarian Data Exchange</a> </font></h2>
+                
+              <p>
+        <iframe src="Citizen.html" width="900px" height="700 px" scrolling="no" style="overflow:hidden"></iframe>
 
-    map.on('load', function() {
-      map.addLayer({
-        id: 'states',
-        type: 'fill',
-        source: {
-          type: 'vector',
-          url: 'mapbox://danswick.7z7tytfm'
-        },
-        'source-layer': 'stateData-2kxlnb',
-        paint: {
-          'fill-color': [
-            // use a curve (http://bl.ocks.org/anandthakker/raw/6d0269825a7e0381cdcde13f84a0b6b0/#types-expression-curve)
-            // of type "step," which will step through each break instead of interpolating between them.
-            // Then, get the density value and use a `number` expression to return it as a number instead of a string.
-            // Each step is then a pair [{color code}, {max value for break}]
-            // Finally, add a default color code for any features that fall outside of the steps you've defined.
-            "curve",
-              ["step"], ["number", ["get", "density"], 1], "#FFEDA0", 10, "#FED976", 20, "#FEB24C", 50, "#FD8D3C", 100, "#FC4E2A", 200, "#E31A1C", 500, "#BD0026", 2000, "#000000"
-          ],
-          'fill-opacity': 0.6
-        },
-        layout: {}
-      });
+    </script>
+              </section>
 
-      // Line layer to make each state more distinct 
-      map.addLayer({
-        id: 'stateBounds',
-        type: 'line',
-        source: {
-          type: 'vector',
-          url: 'mapbox://danswick.7z7tytfm'
-        },
-        'source-layer': 'stateData-2kxlnb',
-        paint: {
-          'line-color': "#eeeeee",
-          'line-width': 2,
-          'line-opacity': 0.5
-        },
-        layout: {}
-      });
-    });
-        </script>
-         </section>
           </div>
+
 
         <!-- Copyright -->
           <div id="copyright">
             <ul><li>&copy; Natalie Ferri </li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>
           </div>
 
-      </div>
+            </div>
 
     <!-- Scripts -->
       <script src="assets/js/jquery.min.js"></script>
@@ -140,4 +94,4 @@
       <script src="assets/js/main.js"></script>
 
   </body>
-</html
+</html>
