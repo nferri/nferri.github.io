@@ -40,7 +40,7 @@
 <style> 
   #map {
   position: center
-   width: 60%; 
+   width: 100%; 
    height: 800px;
    background-color: white;
   }
@@ -88,6 +88,17 @@
     attribution: 'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
   }).addTo(map);
 
+
+$.getJSON('states.geojson',function(data){
+      // add GeoJSON layer to the map once the file is loaded
+      var datalayer = L.geoJson(states ,{
+        onEachFeature: function(feature, featureLayer) {
+          featureLayer.bindPopup(feature.properties.name);
+        },
+                style: style
+      }).addTo(map);
+    
+});
   // control that shows state info on hover
   var info = L.control();
 
