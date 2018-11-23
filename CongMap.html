@@ -51,11 +51,11 @@
 			
 						//add a local geojson file
 			//Thanks to https://www.igismap.com/add-load-geojson-file-point-polyline-polygon-map-leaflet-js/ for the tutorial
-			$.getJSON("CD.json",function(data){
+			$.getJSON("ST.json",function(data){
 			// add GeoJSON layer to the map once the file is loaded
 			var datalayer = L.geoJson(data ,{
 				onEachFeature: function(feature, featureLayer) {
-					featureLayer.bindPopup(feature.properties.STATE);
+					featureLayer.bindPopup(feature.properties.name);
 				}
 			}).addTo(map);
 			map.fitBounds(datalayer.getBounds());
