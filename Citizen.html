@@ -39,7 +39,7 @@
 			var CartoDB_PositronNoLabels = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', {
 			attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
 			subdomains: 'abcd',
-			maxZoom: 5
+			maxZoom: 4
 
 			});
 
@@ -61,8 +61,11 @@
 					featureLayer.bindPopup(feature.properties.name);
 				}
 			}).addTo(map);
+			map.fitBounds(datalayer.getBounds());
+			
 			});
 			
+
 			// Disable mousewheel zoom
 			map.scrollWheelZoom.disable();
 
