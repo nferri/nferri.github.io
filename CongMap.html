@@ -29,36 +29,17 @@
       attribution: '<a href="https://wikimediafoundation.org/wiki/Maps_Terms_of_Use">Wikimedia</a><br><a href="https://www.abc.net.au/news/2018-06-25/chart-of-the-day-trump-global-approval/9899778">Data1</a><br><a href="https://www.bbc.com/news/world-us-canada-39732845">Data2</a>',
  }).addTo(map) //this is the basemap
     
-
-    function getColor(d) {
-    return d == 1 ? '#003366' :
-           d == 0 ? '#ffd700' :
-           d == -1 ? '#A80B0B' :
-                      '#EAEDF2';
-}
-    
-    function style(feature) {
-    return {
-        fillColor: getColor(feature.properties.density),
-        weight: 2,
-        opacity: 1,
-        color: 'white',
-        dashArray: '3',
-        fillOpacity: 0.7
-    };
-}
-
-			//add a local geojson file
-			//Thanks to https://www.igismap.com/add-load-geojson-file-point-polyline-polygon-map-leaflet-js/ for the tutorial
-			$.getJSON('us-states.json',function(data){
-			// add GeoJSON layer to the map once the file is loaded
-			var datalayer = L.geoJson(data ,{
-				onEachFeature: function(feature, featureLayer) {
-					featureLayer.bindPopup(feature.properties.name);
-				},
+      //add a local geojson file
+      //Thanks to https://www.igismap.com/add-load-geojson-file-point-polyline-polygon-map-leaflet-js/ for the tutorial
+      $.getJSON('us-states.json',function(data){
+      // add GeoJSON layer to the map once the file is loaded
+      var datalayer = L.geoJson(data ,{
+        onEachFeature: function(feature, featureLayer) {
+          featureLayer.bindPopup(feature.properties.name);
+        },
                 style: style
-			}).addTo(map);
-		
+      }).addTo(map);
+    
 });
 
     //icons
@@ -80,7 +61,7 @@
 
     L.marker([33.0, 65.0], {icon:trump_head}).addTo(map) //Afghanistan
     .bindPopup('"It was a pleasure to have President Ashraf Ghani of Afghanistan with us this morning!"<br> - @realDonaldTrump, 21 Sept 2017');
-
+</script>
 
   </body>
 </html
