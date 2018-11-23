@@ -39,7 +39,7 @@
 			var CartoDB_PositronNoLabels = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', {
 			attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
 			subdomains: 'abcd',
-			maxZoom: 4
+			maxZoom: 7
 
 			});
 
@@ -51,19 +51,8 @@
 			//add the basemap to the map
 			map.addLayer(CartoDB_PositronNoLabels);
 
-
-			//add a local geojson file
-			//Thanks to https://www.igismap.com/add-load-geojson-file-point-polyline-polygon-map-leaflet-js/ for the tutorial
-				$.getJSON('ST.json',function(data){
-			// add GeoJSON layer to the map once the file is loaded
-			var datalayer = L.geoJson(data ,{
-				onEachFeature: function(feature, featureLayer) {
-					featureLayer.bindPopup(feature.properties.ADMIN);
-				},
-                style: style
-			}).addTo(map);
+			var geojson = L.geoJson(statesData).addTo(map);
 		
-			
 
 			// Disable mousewheel zoom
 			map.scrollWheelZoom.disable();
