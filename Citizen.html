@@ -44,20 +44,9 @@
 }).addTo(map);
 
     
-  $.getJSON("us_states_geojson.geojson",function(data){
-    L.geoJson( data, {
-      style: function(feature){
-        var fillColor,
-            density = feature.properties.density;
-      },
-      onEachFeature: function( feature, layer ){
-        layer.bindPopup( "<strong>" + feature.properties.name + "</strong><br/>" )
-      }
-    }).addTo(map);
 
      // Disable mousewheel zoom
       map.scrollWheelZoom.disable();
-  });
 
 
  
