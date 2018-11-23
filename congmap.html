@@ -28,7 +28,10 @@
 <body>
  
   <div id="map"></div>
- 
+
+
+<script src="path/to/leaflet.js"></script>
+<script src="path/to/choropleth.js"></script>
   <script>
  
   // initialize the map
@@ -60,6 +63,23 @@
         layer.bindPopup( "<strong>" + feature.properties.name + "</strong><br/>" )
       }
     }).addTo(map);
+
+L.choropleth(geojsonData, {
+  valueProperty: 'incidents', // which property in the features to use
+  scale: ['white', 'green'], // chroma.js scale - include as many as you like
+  steps: 6, // number of breaks or steps in range
+  mode: 'q', // q for quantile, e for equidistant, k for k-means
+  style: {
+    color: '#fff', // border color
+    weight: 2,
+    fillOpacity: 0.8
+  },
+  onEachFeature: function(feature, layer) {
+    layer.bindPopup(feature.properties.value)
+  }
+}).addTo(map)
+
+
      // Disable mousewheel zoom
       map.scrollWheelZoom.disable();
   });
