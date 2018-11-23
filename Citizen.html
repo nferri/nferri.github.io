@@ -43,7 +43,7 @@
 }).addTo(map);
 
     
-  $.getJSON("us_states_geojson.geojson",function(data){
+  $.getJSON("us_states_geojson2.geojson",function(data){
     L.geoJson( data, {
       style: function(feature){
         var fillColor,
@@ -57,7 +57,7 @@
         return { color: "#999", weight: 1, fillColor: fillColor, fillOpacity: .6 };
       },
       onEachFeature: function( feature, layer ){
-        layer.bindPopup( "<strong>" + feature.properties.Name + "</strong><br/>" )
+        layer.bindPopup( "<strong>" + feature.properties.name + "</strong><br/>" )
       }
     }).addTo(map);
   });
