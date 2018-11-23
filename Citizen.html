@@ -60,6 +60,8 @@
         layer.bindPopup( "<strong>" + feature.properties.name + "</strong><br/>" )
       }
     }).addTo(map);
+     // Disable mousewheel zoom
+      map.scrollWheelZoom.disable();
   });
  
  
