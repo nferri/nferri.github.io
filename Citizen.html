@@ -110,7 +110,7 @@ L.geoJSON(states, {
       return { color: "#999", weight: .5, fillColor: fillColor, fillOpacity: .9 };
     },
     onEachFeature: function( feature, layer ){
-      layer.bindPopup( "<strong>" + feature.properties.name + "</strong><br/>" + "Median Household Income: $" + "<strong>" + feature.properties.density +"</strong>" + "<br/>Monetary Disparity: Richest State Congressperson Makes X Times the Average Citizen's Income: " + "<strong>" + feature.properties.percent +"</strong>")
+      layer.bindPopup( "<strong>" + feature.properties.name + "</strong><br/>" + "Median Household Income: $" + "<strong>" + feature.properties.density +"</strong>" + "<br/>Monetary Disparity: Richest State Congressperson Makes " + "<strong>" + feature.properties.percent + "</strong>" + " Times the Average Citizen's Income")
     }
   }  ).addTo(map);
 
