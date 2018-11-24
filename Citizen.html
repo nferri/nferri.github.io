@@ -101,12 +101,13 @@ L.geoJSON(states, {
     style: function(feature){
       var fillColor,
           percent = feature.properties.percent;
-      if ( percent > 60000 ) fillColor = "#006837";
-      else if ( percent > 30000 ) fillColor = "#31a354";
-      else if ( percent > 10000 ) fillColor = "#78c679";
-      else if ( percent > 1000 ) fillColor = "#ffffcc";
+      if ( percent > 70000 ) fillColor = "#67000d";
+      else if ( percent > 40000 ) fillColor = "#cb181d";
+      else if ( percent > 20000 ) fillColor = "#fb6a4a";
+      else if ( percent > 8000 ) fillColor = "#fcbba1";
+      else if ( percent > 1000 ) fillColor = "#fee0d2"
       else fillColor = "#f7f7f7";  // no data
-      return { color: "#999", weight: 1, fillColor: fillColor, fillOpacity: .8 };
+      return { color: "#999", weight: .5, fillColor: fillColor, fillOpacity: .9 };
     },
     onEachFeature: function( feature, layer ){
       layer.bindPopup( "<strong>" + feature.properties.name + "</strong><br/>" + "Median Household Income: $" + "<strong>" + feature.properties.density +"</strong>" + "<br/>Monitary Disparety: Richest State Congressperson Percent Difference to Citizen's Income: %" + "<strong>" + feature.properties.percent +"</strong>")
