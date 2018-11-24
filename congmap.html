@@ -111,7 +111,7 @@ L.geoJSON(states, {
     },
     onEachFeature: function( feature, layer ){
       layer.bindPopup( "<strong>" + feature.properties.name + "</strong><br/>" 
-        + "Congressperson:" + "<strong>" + feature.properties.who +"</strong>" 
+        + "Congressperson: " + "<strong>" + feature.properties.who +"</strong>" 
         + "<br/>Political Party: " + "<strong>" + feature.properties.party + "</strong><br/>" 
         + "Net Worth MM: $" + "<strong>" + feature.properties.density + "</strong>" )
     }
