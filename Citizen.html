@@ -107,8 +107,8 @@ L.geoJSON(states, {
       else if ( percent > 300 ) fillColor = "#fb6a4a";
       else if ( percent > 100 ) fillColor = "#fcbba1";
       else if ( percent > 10 ) fillColor = "#fee0d2"
-      else fillColor = "#f7f7f7";  // no data
-      return { color: "#999", weight: .5, fillColor: fillColor, fillOpacity: .9 };
+      else fillColor = "#00FFFFFF";  // no data
+      return { color: "#999", weight: .8, fillColor: fillColor, fillOpacity: .95 };
     },
     onEachFeature: function( feature, layer ){
       layer.bindPopup( "<strong>" + feature.properties.name + "</strong><br/>" + "Median Household Income: $" + "<strong>" + feature.properties.density +"</strong>" + "<br/>Monetary Disparity: Richest State Congressperson Makes " + "<strong>" + feature.properties.percent + "</strong>" + " Times the Average Citizen's Income")
@@ -142,7 +142,7 @@ function getColor(d) {
            d > 300 ? '#fb6a4a' :
            d > 100  ? '#fcbba1' :
            d > 10  ? '#fee0d2' :
-                      '#f7f7f7';
+                      '#00000000';
 }
 
 

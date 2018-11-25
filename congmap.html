@@ -107,8 +107,8 @@ L.geoJSON(states, {
       else if ( density > 15 ) fillColor = "#74c476";
       else if ( density > 5 ) fillColor = "#c7e9c0";
       else if ( density > 1 ) fillColor = "#f7fcf5";
-      else fillColor = "#f7f7f7";  // no data
-      return { color: "#999", weight: 1, fillColor: fillColor, fillOpacity: .8 };
+      else fillColor = "#00FFFFFF";  // no data
+      return { color: "#999", weight: .8, fillColor: fillColor, fillOpacity: .95 };
     },
     onEachFeature: function( feature, layer ){
       layer.bindPopup( "<strong>" + feature.properties.name + "</strong><br/>" 
@@ -146,7 +146,7 @@ function getColor(d) {
            d > 15 ? '#74c476' :
            d > 5  ? '#c7e9c0' :
            d > 1   ? '#f7fcf5' :
-                      '#f7f7f7';
+                      '#00000000';
 }
 
 
