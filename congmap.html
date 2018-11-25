@@ -23,6 +23,7 @@
 
   <style>
     #map{ height: 100% }
+    .legend { text-align: left; line-height: 18px; color: #555; } .legend i { width: 18px; height: 18px; float: left; margin-right: 8px; opacity: 0.7; }
   </style>
 </head>
 <body>
@@ -116,6 +117,37 @@ L.geoJSON(states, {
         + "Net Worth MM: $" + "<strong>" + feature.properties.density + "</strong>" )
     }
   }  ).addTo(map);
+
+
+var legend = L.control({position: 'bottomright'});
+
+legend.onAdd = function (map) {
+
+    var div = L.DomUtil.create('div', 'info legend'),
+    grades = [0, 1, 5, 15, 30, 50],
+    labels = [];
+
+    // loop through our density intervals and generate a label with a colored square for each interval
+    for (var i = 0; i < grades.length; i++) {
+        div.innerHTML +=
+            '<i style="background:' + getColor(grades[i] + 1) + '"></i> ' +
+            grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
+}
+
+return div;
+};
+
+legend.addTo(map);
+
+
+function getColor(d) {
+    return d > 50 ? '#00441b' :
+           d > 30  ? '#238b45' :
+           d > 15 ? '#74c476' :
+           d > 5  ? '#c7e9c0' :
+           d > 1   ? '#f7fcf5' :
+                      '#f7f7f7';
+}
 
 
      // Disable mousewheel zoom
