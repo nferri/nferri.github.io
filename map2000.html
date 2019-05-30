@@ -58,14 +58,14 @@
         var map = new mapboxgl.Map({
             container: 'map',
             style: 'mapbox://styles/mapbox/light-v8',
-            zoom: 11,
-            center: [-79.0193, 35.7596]
+            zoom:6.5,
+            center: [-81.0193, 35.3]
         });
 
         // Add zoom and rotation controls to the map.
         map.addControl(new mapboxgl.Navigation());
 
-        //data source: http://opendata.dc.gov/datasets/e87a760828844422afe864a6754049c2_20?geometry=-77.297%2C38.854%2C-76.732%2C38.934
+        //data source: https://github.com/nferri/Capstone/blob/master/North_Carolina_98_to_102.geojson
         map.on('load', function () {
             map.addSource('nc', {
                 type: 'geojson',
