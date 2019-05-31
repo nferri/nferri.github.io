@@ -69,11 +69,11 @@
         map.on('load', function () {
             map.addSource('nc', {
                 type: 'geojson',
-                data: 'North_Carolina_98_to_102.geojson'
+                data: 'nferri.github.io/North_Carolina_98_to_102.geojson'
             });
 
             map.addLayer({
-                "id": "tracts",
+                "id": "id",
                 "type": "fill",
                 "source": "nc",
                 "paint": {
@@ -95,12 +95,12 @@
 
         map.on("mousemove", function (e) {
             var features = map.queryRenderedFeatures(e.point, {
-                layers: ["tracts"]
+                layers: ["id"]
             });
 
             if (features.length) {
                 //show name and value in sidebar
-                document.getElementById('tooltip-name').innerHTML = "Tract " + features[0].properties.FEDTRACTNO;
+                document.getElementById('tooltip-name').innerHTML = "id " + features[0].properties.FEDTRACTNO;
                 document.getElementById('tooltip').innerHTML = Math.round(features[0].properties.TOTPOPCHG);
                 //for troubleshooting - show complete features info
                 //document.getElementById('tooltip').innerHTML = JSON.stringify(features, null, 2);
