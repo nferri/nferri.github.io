@@ -63,14 +63,11 @@
             }
             </style>
              
-            <nav id="menu"></nav>
-
-    </style>
-
+           
 </head>
 
 <body>
-
+    <nav id="menu"></nav>
     <div id='map'></div>
     <div id='sidebar'>
         <h1>North Carolina Redistricting</h1>
@@ -163,7 +160,7 @@
 
    });
 
-        map.on("mousemove", function (e) {
+        /* map.on("mousemove", function (e) {
             var features = map.queryRenderedFeatures(e.point, {
                 layers: ["id"]
             });
@@ -179,7 +176,7 @@
                 document.getElementById('tooltip-name').innerHTML = "";
                 document.getElementById('tooltip').innerHTML = "";
             }
-        });
+        }); */
 
         var toggleableLayerIds = [ 'nc', 'nc2' ];
  
