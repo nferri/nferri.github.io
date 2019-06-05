@@ -42,7 +42,7 @@
     <div id='map'></div>
     <div id='sidebar'>
         <h1>North Carolina Redistricting</h1>
-        <h2>Campaign Finance, 2007-2018</h2>
+        <h2>Campaign Finance, 2013-2016</h2>
         <div id="tooltip-name"></div>
         <div id='tooltip'></div>
     </div>
@@ -71,7 +71,7 @@
         map.on('load', function () {
             map.addSource('nc', {
                 type: 'geojson',
-                data: 'nferri.github.io/North_Carolina_103_to_105.geojson'
+                data: 'nferri.github.io/nc13.geojson'
             });
 
             map.addLayer({
