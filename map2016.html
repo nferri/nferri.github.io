@@ -67,7 +67,6 @@
         // Add zoom and rotation controls to the map.
         map.addControl(new mapboxgl.Navigation());
 
-        //data source: https://github.com/nferri/Capstone/blob/master/North_Carolina_98_to_102.geojson
         map.on('load', function () {
             map.addSource('nc', {
                 type: 'geojson',
@@ -97,6 +96,358 @@
                     "fill-outline-color": "#ffffff"
                 }
             });
+
+            map.on('load', function () {
+            map.addSource('nc', {
+                type: 'geojson',
+                data: 'nferri.github.io/nc12.geojson'
+            });
+
+            map.addLayer({
+                "id": "id",
+                "type": "fill",
+                "source": "nc",
+                'source-layer': 'nc',
+                'layout': {
+                'visibility': 'visible',
+                },
+                "paint": {
+                    "fill-color": {
+                        property: 'TOTPOPCHG',
+                        stops: [
+                    [BREAKS[0], COLORS[0]],
+                    [BREAKS[1], COLORS[1]],
+                    [BREAKS[2], COLORS[2]],
+                    [BREAKS[3], COLORS[3]],
+                    [BREAKS[4], COLORS[4]],
+                    [BREAKS[5], COLORS[5]]]
+                    },
+                    "fill-opacity": 0.7,
+                    "fill-outline-color": "#ffffff"
+                }
+            });
+            map.on('load', function () {
+            map.addSource('nc', {
+                type: 'geojson',
+                data: 'nferri.github.io/nc11.geojson'
+            });
+
+            map.addLayer({
+                "id": "id",
+                "type": "fill",
+                "source": "nc",
+                'source-layer': 'nc',
+                'layout': {
+                'visibility': 'visible',
+                },
+                "paint": {
+                    "fill-color": {
+                        property: 'TOTPOPCHG',
+                        stops: [
+                    [BREAKS[0], COLORS[0]],
+                    [BREAKS[1], COLORS[1]],
+                    [BREAKS[2], COLORS[2]],
+                    [BREAKS[3], COLORS[3]],
+                    [BREAKS[4], COLORS[4]],
+                    [BREAKS[5], COLORS[5]]]
+                    },
+                    "fill-opacity": 0.7,
+                    "fill-outline-color": "#ffffff"
+                }
+            });
+            map.on('load', function () {
+            map.addSource('nc', {
+                type: 'geojson',
+                data: 'nferri.github.io/nc10.geojson'
+            });
+
+            map.addLayer({
+                "id": "id",
+                "type": "fill",
+                "source": "nc",
+                'source-layer': 'nc',
+                'layout': {
+                'visibility': 'visible',
+                },
+                "paint": {
+                    "fill-color": {
+                        property: 'TOTPOPCHG',
+                        stops: [
+                    [BREAKS[0], COLORS[0]],
+                    [BREAKS[1], COLORS[1]],
+                    [BREAKS[2], COLORS[2]],
+                    [BREAKS[3], COLORS[3]],
+                    [BREAKS[4], COLORS[4]],
+                    [BREAKS[5], COLORS[5]]]
+                    },
+                    "fill-opacity": 0.7,
+                    "fill-outline-color": "#ffffff"
+                }
+            });
+            map.on('load', function () {
+            map.addSource('nc', {
+                type: 'geojson',
+                data: 'nferri.github.io/nc9.geojson'
+            });
+
+            map.addLayer({
+                "id": "id",
+                "type": "fill",
+                "source": "nc",
+                'source-layer': 'nc',
+                'layout': {
+                'visibility': 'visible',
+                },
+                "paint": {
+                    "fill-color": {
+                        property: 'TOTPOPCHG',
+                        stops: [
+                    [BREAKS[0], COLORS[0]],
+                    [BREAKS[1], COLORS[1]],
+                    [BREAKS[2], COLORS[2]],
+                    [BREAKS[3], COLORS[3]],
+                    [BREAKS[4], COLORS[4]],
+                    [BREAKS[5], COLORS[5]]]
+                    },
+                    "fill-opacity": 0.7,
+                    "fill-outline-color": "#ffffff"
+                }
+            });
+            map.on('load', function () {
+            map.addSource('nc', {
+                type: 'geojson',
+                data: 'nferri.github.io/nc8.geojson'
+            });
+
+            map.addLayer({
+                "id": "id",
+                "type": "fill",
+                "source": "nc",
+                'source-layer': 'nc',
+                'layout': {
+                'visibility': 'visible',
+                },
+                "paint": {
+                    "fill-color": {
+                        property: 'TOTPOPCHG',
+                        stops: [
+                    [BREAKS[0], COLORS[0]],
+                    [BREAKS[1], COLORS[1]],
+                    [BREAKS[2], COLORS[2]],
+                    [BREAKS[3], COLORS[3]],
+                    [BREAKS[4], COLORS[4]],
+                    [BREAKS[5], COLORS[5]]]
+                    },
+                    "fill-opacity": 0.7,
+                    "fill-outline-color": "#ffffff"
+                }
+            });
+
+            map.on('load', function () {
+            map.addSource('nc', {
+                type: 'geojson',
+                data: 'nferri.github.io/nc7.geojson'
+            });
+
+            map.addLayer({
+                "id": "id",
+                "type": "fill",
+                "source": "nc",
+                'source-layer': 'nc',
+                'layout': {
+                'visibility': 'visible',
+                },
+                "paint": {
+                    "fill-color": {
+                        property: 'TOTPOPCHG',
+                        stops: [
+                    [BREAKS[0], COLORS[0]],
+                    [BREAKS[1], COLORS[1]],
+                    [BREAKS[2], COLORS[2]],
+                    [BREAKS[3], COLORS[3]],
+                    [BREAKS[4], COLORS[4]],
+                    [BREAKS[5], COLORS[5]]]
+                    },
+                    "fill-opacity": 0.7,
+                    "fill-outline-color": "#ffffff"
+                }
+            });
+            map.on('load', function () {
+            map.addSource('nc', {
+                type: 'geojson',
+                data: 'nferri.github.io/nc6.geojson'
+            });
+
+            map.addLayer({
+                "id": "id",
+                "type": "fill",
+                "source": "nc",
+                'source-layer': 'nc',
+                'layout': {
+                'visibility': 'visible',
+                },
+                "paint": {
+                    "fill-color": {
+                        property: 'TOTPOPCHG',
+                        stops: [
+                    [BREAKS[0], COLORS[0]],
+                    [BREAKS[1], COLORS[1]],
+                    [BREAKS[2], COLORS[2]],
+                    [BREAKS[3], COLORS[3]],
+                    [BREAKS[4], COLORS[4]],
+                    [BREAKS[5], COLORS[5]]]
+                    },
+                    "fill-opacity": 0.7,
+                    "fill-outline-color": "#ffffff"
+                }
+            });
+            map.on('load', function () {
+            map.addSource('nc', {
+                type: 'geojson',
+                data: 'nferri.github.io/nc5.geojson'
+            });
+
+            map.addLayer({
+                "id": "id",
+                "type": "fill",
+                "source": "nc",
+                'source-layer': 'nc',
+                'layout': {
+                'visibility': 'visible',
+                },
+                "paint": {
+                    "fill-color": {
+                        property: 'TOTPOPCHG',
+                        stops: [
+                    [BREAKS[0], COLORS[0]],
+                    [BREAKS[1], COLORS[1]],
+                    [BREAKS[2], COLORS[2]],
+                    [BREAKS[3], COLORS[3]],
+                    [BREAKS[4], COLORS[4]],
+                    [BREAKS[5], COLORS[5]]]
+                    },
+                    "fill-opacity": 0.7,
+                    "fill-outline-color": "#ffffff"
+                }
+            });
+            map.on('load', function () {
+            map.addSource('nc', {
+                type: 'geojson',
+                data: 'nferri.github.io/nc4.geojson'
+            });
+
+            map.addLayer({
+                "id": "id",
+                "type": "fill",
+                "source": "nc",
+                'source-layer': 'nc',
+                'layout': {
+                'visibility': 'visible',
+                },
+                "paint": {
+                    "fill-color": {
+                        property: 'TOTPOPCHG',
+                        stops: [
+                    [BREAKS[0], COLORS[0]],
+                    [BREAKS[1], COLORS[1]],
+                    [BREAKS[2], COLORS[2]],
+                    [BREAKS[3], COLORS[3]],
+                    [BREAKS[4], COLORS[4]],
+                    [BREAKS[5], COLORS[5]]]
+                    },
+                    "fill-opacity": 0.7,
+                    "fill-outline-color": "#ffffff"
+                }
+            });
+            map.on('load', function () {
+            map.addSource('nc', {
+                type: 'geojson',
+                data: 'nferri.github.io/nc3.geojson'
+            });
+
+            map.addLayer({
+                "id": "id",
+                "type": "fill",
+                "source": "nc",
+                'source-layer': 'nc',
+                'layout': {
+                'visibility': 'visible',
+                },
+                "paint": {
+                    "fill-color": {
+                        property: 'TOTPOPCHG',
+                        stops: [
+                    [BREAKS[0], COLORS[0]],
+                    [BREAKS[1], COLORS[1]],
+                    [BREAKS[2], COLORS[2]],
+                    [BREAKS[3], COLORS[3]],
+                    [BREAKS[4], COLORS[4]],
+                    [BREAKS[5], COLORS[5]]]
+                    },
+                    "fill-opacity": 0.7,
+                    "fill-outline-color": "#ffffff"
+                }
+            });
+            map.on('load', function () {
+            map.addSource('nc', {
+                type: 'geojson',
+                data: 'nferri.github.io/nc2.geojson'
+            });
+
+            map.addLayer({
+                "id": "id",
+                "type": "fill",
+                "source": "nc",
+                'source-layer': 'nc',
+                'layout': {
+                'visibility': 'visible',
+                },
+                "paint": {
+                    "fill-color": {
+                        property: 'TOTPOPCHG',
+                        stops: [
+                    [BREAKS[0], COLORS[0]],
+                    [BREAKS[1], COLORS[1]],
+                    [BREAKS[2], COLORS[2]],
+                    [BREAKS[3], COLORS[3]],
+                    [BREAKS[4], COLORS[4]],
+                    [BREAKS[5], COLORS[5]]]
+                    },
+                    "fill-opacity": 0.7,
+                    "fill-outline-color": "#ffffff"
+                }
+            });
+
+            map.on('load', function () {
+            map.addSource('nc', {
+                type: 'geojson',
+                data: 'nferri.github.io/nc1.geojson'
+            });
+
+            map.addLayer({
+                "id": "id",
+                "type": "fill",
+                "source": "nc",
+                'source-layer': 'nc',
+                'layout': {
+                'visibility': 'visible',
+                },
+                "paint": {
+                    "fill-color": {
+                        property: 'TOTPOPCHG',
+                        stops: [
+                    [BREAKS[0], COLORS[0]],
+                    [BREAKS[1], COLORS[1]],
+                    [BREAKS[2], COLORS[2]],
+                    [BREAKS[3], COLORS[3]],
+                    [BREAKS[4], COLORS[4]],
+                    [BREAKS[5], COLORS[5]]]
+                    },
+                    "fill-opacity": 0.7,
+                    "fill-outline-color": "#ffffff"
+                }
+            });
+
         });
 
          map.on("mousemove", function (e) {
